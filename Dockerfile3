@@ -1,11 +1,11 @@
 FROM node:25.9-alpine AS build 
 #wersja node 25.9 z build-sea
 
-#WORKDIR /usr/lab8build
+
 #ssh mount - na tym repozytorium sa tez dockerfile, których nie potrzebuje w srodku, ale nie chce teraz robic 2 repozytoriów, skoro na zajecia przyniosłam jedno
 ADD git@github.com:afutera/af_pawcho_zad1.git /usr/lab8build
 WORKDIR /usr/lab8build/src
-#COPY src .
+
 
 RUN mkdir out &&\
 node --build-sea build-config.json &&\
