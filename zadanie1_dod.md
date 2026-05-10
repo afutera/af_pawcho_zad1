@@ -1,4 +1,4 @@
-Zadania dodatkowe do 2
+Zadania dodatkowe do 3
 
 # Zagrożenia
 docker scout cves docker.io/afu4/pawcho_zadania:zad1-dod2
@@ -93,6 +93,8 @@ pkg:apk/alpine/busybox@1.37.0-r30?os_name=alpine&os_version=3.23
 
  # Polecenie budowania spełniające warunki zadania 2
  docker buildx build --push -t docker.io/afu4/pawcho_zadania:zad1-dod2 --build-arg BUILDKIT_INLINE_CACHE=1 --cache-to type=inline --cache-from docker.io/afu4/pawcho_zadania:zad1-dod2 --platform linux/arm64,linux/amd64 --sbom --provenance=mode=max .
+ # Polecenie budowania spełniające warunki zadania 3
+ docker buildx build --push -f Dockerfile3 -t docker.io/afu4/pawcho_zadania:zad1-dod3 --ssh default --cache-to type=registry,ref=docker.io/afu4/pawcho_zadania:zad1-cache,mode=max --cache-from type=registry,ref=docker.io/afu4/pawcho_zadania:zad1-cache --platform linux/arm64,linux/amd64 --sbom --provenance=mode=max .
 
  # Sprawdzenie platform
  docker buildx imagetools inspect docker.io/afu4/pawcho_zadania:zad1-dod2
@@ -124,7 +126,7 @@ Znaleziono manifesty dla obu wymaganych platfom (i dodatkowo 2 manifesty atestac
 
 # Sprawdzenie działania cache
 1. Usunięto lokalny cache poleceniem docker buildx prune
-2. Pobrano obraz z repozytorium: docker pull docker.io/afu4/pawcho_zadania:zad1-dod2
+2. Pobrano obraz z repozytorium: docker pull docker.io/afu4/pawcho_zadania:zad1-dod2 (lub dod3)
 3. Ponownie zbudowano tym samym poleceniem, co za pierwszym razem.
 
 W komunikatach procesu budowania widoczne jest wykorzystanie cache.
